@@ -26,7 +26,16 @@ const assemblyRouter: Array<RouteObject> = [
         meta: {
           requiresAuth: true,
           title: '批量导入数据',
-          key: 'selectIcon',
+          key: 'batchImport',
+        },
+      },
+      {
+        path: '/assembly/svgIcon',
+        element: lazyLoad(React.lazy(() => import('@/views/assembly/svgIcon/index'))),
+        meta: {
+          requiresAuth: true,
+          title: 'Svg 图标',
+          key: 'svgIcon',
         },
       },
     ],

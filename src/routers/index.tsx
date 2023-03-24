@@ -13,6 +13,8 @@ Object.keys(metaRouters).forEach((item) => {
   })
 })
 
+// console.log(routerArray, 'routerArray')
+
 export const rootRouter: RouteObject[] = [
   {
     path: '/',
@@ -35,7 +37,7 @@ export const rootRouter: RouteObject[] = [
 ]
 
 const Router = () => {
-  //@ts-ignore
+  // @ts-ignore
   const routes = useRoutes(rootRouter)
   return routes
 }

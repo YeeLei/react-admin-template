@@ -4,13 +4,11 @@ import { showFullScreenLoading, tryHideFullScreenLoading } from '@/config/servic
 import { ResultData } from '@/api/interface'
 import { ResultEnum } from '@/enums/httpEnum'
 import { checkStatus } from './helper/checkStatus'
-import { AxiosCanceler } from './helper/axiosCancel'
 import { setToken } from '@/redux/modules/global'
 import { message } from 'antd'
 import { store } from '@/redux'
 
-const axiosCanceler = new AxiosCanceler()
-
+// axios配置
 const config = {
   // 默认地址请求地址，可在 .env 开头文件中修改
   baseURL: import.meta.env.VITE_API_URL as string,
@@ -34,8 +32,7 @@ class RequestHttp {
     this.service.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         NProgress.start()
-        // * 将当前请求添加到 pending 中
-        axiosCanceler.addPending(config)
+
         // * 如果当前请求不需要显示 loading,在api服务中通过指定的第三个参数: { headers: { noLoading: true } }来控制不显示loading，参见loginApi
         config.headers!.noLoading || showFullScreenLoading()
         const token: string = store.getState().global.token
@@ -52,21 +49,19 @@ class RequestHttp {
      */
     this.service.interceptors.response.use(
       (response: AxiosResponse) => {
-        const { data, config } = response
+        const { data } = response
         NProgress.done()
-        // * 在请求结束后，移除本次请求(关闭loading)
-        axiosCanceler.removePending(config)
         tryHideFullScreenLoading()
         // * 登录失效（code == 599）
         if (data.code == ResultEnum.OVERDUE) {
           store.dispatch(setToken(''))
-          message.error(data.msg)
+          message.error(data.message)
           window.location.hash = '/login'
           return Promise.reject(data)
         }
         // * 全局错误信息拦截（防止下载文件得时候返回数据流，没有code，直接报错）
         if (data.code && data.code !== ResultEnum.SUCCESS) {
-          message.error(data.msg)
+          message.error(data.message)
           return Promise.reject(data)
         }
         // * 成功请求（在页面上除非特殊情况，否则不用处理失败逻辑）

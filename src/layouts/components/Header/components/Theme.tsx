@@ -1,17 +1,24 @@
-import { Drawer, Divider, Switch, message } from 'antd'
+import { Drawer, Divider, Switch } from 'antd'
 import { useState } from 'react'
-import { RootState, useDispatch, useSelector } from '@/redux'
-import { FireOutlined } from '@ant-design/icons'
-import { setWeakOrGray } from '@/redux/modules/global'
+import { useDispatch, useSelector } from 'react-redux'
+import { FireOutlined, SettingOutlined } from '@ant-design/icons'
+import { setBreadcrumb, setDark, setFooter, setTabs, setWeakOrGray } from '@/redux/modules/global'
+import { updateCollapse } from '@/redux/modules/menu'
+import { RootState } from '@/redux'
+import { ThemeConfigProp } from '@/redux/interface'
 
 const Theme = () => {
   const dispatch = useDispatch()
-  const { weakOrGray } = useSelector((state: RootState) => state.global.themeConfig)
-  const [visible, setVisible] = useState<boolean>(false)
+  const isCollapse = useSelector<RootState>((state) => state.menu.isCollapse) as boolean
+  const themeConfig = useSelector<RootState>((state) => state.global.themeConfig) as ThemeConfigProp
+  const { weakOrGray, isDark, breadcrumb, tabs, footer } = themeConfig
 
-  const onChange = (checked: boolean, theme: string) => {
-    if (checked) return dispatch(setWeakOrGray(theme))
-    dispatch(setWeakOrGray(''))
+  const [visible, setVisible] = useState<boolean>(false)
+  const changeSetWeakOrGray = (checked: boolean, theme: string) => {
+    if (checked) {
+      dispatch(setWeakOrGray(theme))
+      return
+    }
   }
 
   return (
@@ -31,17 +38,20 @@ const Theme = () => {
         visible={visible}
         width={320}
       >
+        {/* 全局主题 */}
         <Divider className="divider">
           <FireOutlined />
           全局主题
         </Divider>
         <div className="theme-item">
-          <span>暗黑模式（未完成）</span>
+          <span>暗黑模式</span>
           <Switch
+            className="dark"
+            defaultChecked={isDark}
             checkedChildren={<>🌞</>}
             unCheckedChildren={<>🌜</>}
-            onChange={() => {
-              message.success('欢迎提交 pull request ✨')
+            onChange={(e) => {
+              dispatch(setDark(e))
             }}
           />
         </div>
@@ -50,7 +60,7 @@ const Theme = () => {
           <Switch
             checked={weakOrGray === 'gray'}
             onChange={(e) => {
-              onChange(e, 'gray')
+              changeSetWeakOrGray(e, 'gray')
             }}
           />
         </div>
@@ -59,7 +69,49 @@ const Theme = () => {
           <Switch
             checked={weakOrGray === 'weak'}
             onChange={(e) => {
-              onChange(e, 'weak')
+              changeSetWeakOrGray(e, 'weak')
+            }}
+          />
+        </div>
+        <br />
+        {/* 界面设置 */}
+        <Divider className="divider">
+          <SettingOutlined />
+          界面设置
+        </Divider>
+        <div className="theme-item">
+          <span>折叠菜单</span>
+          <Switch
+            checked={isCollapse}
+            onChange={(e) => {
+              dispatch(updateCollapse(e))
+            }}
+          />
+        </div>
+        <div className="theme-item">
+          <span>面包屑导航</span>
+          <Switch
+            checked={breadcrumb}
+            onChange={(e) => {
+              dispatch(setBreadcrumb(e))
+            }}
+          />
+        </div>
+        <div className="theme-item">
+          <span>标签栏</span>
+          <Switch
+            checked={tabs}
+            onChange={(e) => {
+              dispatch(setTabs(e))
+            }}
+          />
+        </div>
+        <div className="theme-item">
+          <span>页脚</span>
+          <Switch
+            checked={footer}
+            onChange={(e) => {
+              dispatch(setFooter(e))
             }}
           />
         </div>

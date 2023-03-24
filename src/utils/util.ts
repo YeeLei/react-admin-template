@@ -95,7 +95,7 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
 }
 
 /**
- * @description 递归当前路由的 所有 关联的路由，生成面包屑导航栏
+ * @description 递归当前路由的 所有关联的路由，生成面包屑导航栏
  * @param {String} path 当前访问地址
  * @param {Array} menuList 菜单列表
  * @returns array
