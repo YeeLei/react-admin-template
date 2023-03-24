@@ -1,33 +1,24 @@
-# Hooks-Admin 🚀
+# React-Admin-Template 🚀
 
 ### 介绍 📖
 
-🚀🚀🚀 Hooks Admin，基于 React18、React-Router v6、React-Hooks、Redux && Redux-Toolkit、TypeScript、Vite2、Ant-Design 开源的一套后台管理框架。
-
-🌈 Redux-Toolkit 版本请切换到 Redux-Toolkit 分支上
-
-### 项目相关文档 📚
-
-- 项目更新日志：[CHANGELOG.md](./CHANGELOG.md)
+🚀🚀🚀 Hooks Admin，基于 React18、React-Router v6、React-Hooks、Redux && Redux-Toolkit、TypeScript、Vite2、Ant-Design 的一套后台管理框架。
 
 ### 一、在线预览地址 👀
 
-- Link：https://hooks-admin.vercel.app
+- Link：<https://hooks-admin.vercel.app>
 
 ### 二、Git 仓库地址 (欢迎 Star⭐)
 
-- Gitee：https://gitee.com/laramie/Hooks-Admin
-
-- GitHub：https://github.com/HalseySpicy/Hooks-Admin
+- GitHub：<https://github.com/YeeLei/react-admin-template>
 
 ### 三、🔨🔨🔨 项目功能
 
 - 🚀 采用最新技术找开发：React18、React-Router v6、React-Hooks、TypeScript、Vite2
 - 🚀 采用 Vite2 作为项目开发、打包工具（配置了 Gzip 打包、跨域代理、打包预览工具……）
-- 🚀 整个项目集成了 TypeScript （完全是为了想学习 🤣）
-- 🚀 使用 redux 做状态管理，集成 immer、react-redux、redux-persist 开发
-- 🚀 集成了两套状态管理，master 分支使用的是 redux || redux-toolkit 分支使用的是 redux-toolkit
-- 🚀 使用 TypeScript 对 Axios 整个二次封装 （全局错误拦截、常用请求封装、全局请求 Loading、取消重复请求……）
+- 🚀 整个项目集成了 TypeScript
+- 🚀 使用 redux 做状态管理，集成 immer、react-redux、redux-toolkit、redux-persist 开发
+- 🚀 使用 TypeScript 对 Axios 整个二次封装 （全局错误拦截、常用请求封装、全局请求 Loading）
 - 🚀 支持 Antd 组件大小切换、灰色 && 色弱模式、i18n 国际化（i18n 暂时没配置所有文件，根据项目自行配置）
 - 🚀 使用 自定义高阶组件 进行路由权限拦截（403 页面）、页面按钮权限配置
 - 🚀 支持 React-Router v6 路由懒加载配置、菜单手风琴模式、无限级菜单、多标签页、面包屑导航
@@ -84,8 +75,6 @@ npm run lint:eslint
 # prettier 格式化代码
 npm run lint:prettier
 
-# stylelint 格式化样式
-lint:stylelint
 ```
 
 - **commit：**
@@ -95,20 +84,11 @@ lint:stylelint
 npm run commit
 ```
 
-### 五、项目截图
-
-#### 1、登录页：
-
-![hooks-login](https://iamge-1259297738.cos.ap-chengdu.myqcloud.com/img/20220628142330.png)
-
-#### 2、首页：
-
-![hooks-home](https://iamge-1259297738.cos.ap-chengdu.myqcloud.com/img/20220628142344.png)
-
-### 六、文件资源目录 📚
+### 五、文件资源目录 📚
 
 ```text
 Geeker-Admin
+├─ .husky                 # git-hooks提交
 ├─ .vscode                # vscode推荐配置
 ├─ public                 # 静态资源文件（忽略打包）
 ├─ src
@@ -139,13 +119,8 @@ Geeker-Admin
 ├─ .gitignore             # git 提交忽略
 ├─ .prettierignore        # 忽略 prettier 格式化
 ├─ .prettierrc.js         # prettier 配置
-├─ .stylelintignore       # 忽略 stylelint 格式化
-├─ .stylelintrc.js        # stylelint 样式格式化配置
-├─ CHANGELOG.md           # 项目更新日志
 ├─ commitlint.config.js   # git 提交规范配置
 ├─ index.html             # 入口 html
-├─ LICENSE                # 开源协议文件
-├─ lint-staged.config     # lint-staged 配置文件
 ├─ package-lock.json      # 依赖包包版本锁
 ├─ package.json           # 依赖包管理
 ├─ postcss.config.js      # postcss 配置
@@ -154,7 +129,7 @@ Geeker-Admin
 └─ vite.config.ts         # vite 配置
 ```
 
-### 七、浏览器支持
+### 六、浏览器支持
 
 > 默认支持以下浏览器。更多浏览器可以查看 [Can I Use Es Module](https://caniuse.com/?search=ESModule)
 >
@@ -164,29 +139,8 @@ Geeker-Admin
 | :-----------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
 |                              last 2 versions                              |                                 last 2 versions                                 |                                last 2 versions                                |                                last 2 versions                                |
 
-### 八、项目后台接口 🧩
+### 七、项目后台接口 🧩
 
 > 项目后台接口完全采用 Mock 数据，感谢以下 Mock 平台支持
 
-- FastMock： https://www.fastmock.site/
-- EasyMock：https://mock.mengxuegu.com/
-
-### 九、微信交流群
-
-> 扫描以下二维码，加入群聊 🤪
-
-|                                           微信群二维码                                            |
-| :-----------------------------------------------------------------------------------------------: |
-| <img src="https://iamge-1259297738.cos.ap-chengdu.myqcloud.com/img/20220811092339.png" width=200> |
-
-### 十、捐赠 🍵
-
-> **如果你正在使用这个项目或者喜欢这个项目的，可以通过以下方式支持我**
-
-- **Star、Fork、Watch** 一键三连 🚀🚀
-
-- 通过 **微信、支付宝** 一次性捐款，够维护访问地址就行 🤣🤣
-
-|                                                         微信                                                          |                                                        支付宝                                                         |
-| :-------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://iamge-1259297738.cos.ap-chengdu.myqcloud.com/img/20220610144145.png" alt="Wechat QRcode" width=170> | <img src="https://iamge-1259297738.cos.ap-chengdu.myqcloud.com/img/20220610144200.png" alt="Alipay QRcode" width=170> |
+- FastMock： <https://www.fastmock.site/>
