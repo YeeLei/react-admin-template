@@ -6,7 +6,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import viteCompression from 'vite-plugin-compression'
 import eslintPlugin from 'vite-plugin-eslint'
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // @see: https://vitejs.dev/config/
 export default defineConfig((mode: ConfigEnv): UserConfig => {
@@ -61,9 +61,9 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
       }),
       // * 使用 svg 图标
       createSvgIconsPlugin({
-				iconDirs: [resolve(process.cwd(), "src/assets/icons")],
-				symbolId: "icon-[dir]-[name]"
-			}),
+        iconDirs: [resolve(process.cwd(), 'src/static/icons')],
+        symbolId: 'icon-[dir]-[name]',
+      }),
       // * EsLint 报错信息显示在浏览器界面上
       eslintPlugin(),
       // * 是否生成包预览
@@ -96,9 +96,9 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
       rollupOptions: {
         output: {
           // Static resource classification and packaging
-          chunkFileNames: 'assets/js/[name]-[hash].js',
-          entryFileNames: 'assets/js/[name]-[hash].js',
-          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+          chunkFileNames: 'static/js/[name]-[hash].js',
+          entryFileNames: 'static/js/[name]-[hash].js',
+          assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
         },
       },
     },

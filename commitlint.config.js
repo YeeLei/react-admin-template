@@ -29,6 +29,7 @@ module.exports = {
   prompt: {
     messages: {
       type: '选择你要提交的类型 :',
+      scope: '请选择提交的范围 :',
       customScope: '请输入自定义的提交范围 :',
       subject: '请简要描述提交(必填)',
       body: '请输入详细描述(可选)',
@@ -45,7 +46,7 @@ module.exports = {
       { value: 'test', name: 'test:   ✅  测试相关', emoji: '✅' },
       {
         value: 'build',
-        name: 'build:   📦️  构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）',
+        name: 'build:   📦️  构建流程、外部依赖变更（如升级 npm 包、修改 vite 配置等）',
         emoji: '📦️',
       },
       { value: 'revert', name: 'revert:   ⏪️  回退代码', emoji: '⏪️' },
@@ -53,6 +54,7 @@ module.exports = {
     ],
     useEmoji: true,
     emojiAlign: 'center',
+    skipQuestions: ['scope', 'customScope', 'breaking', 'body', 'footer'],
     allowCustomIssuePrefixs: false,
     allowEmptyIssuePrefixs: false,
   },

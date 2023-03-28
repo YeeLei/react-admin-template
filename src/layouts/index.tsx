@@ -10,11 +10,12 @@ import LayoutHeader from './components/Header'
 import LayoutTabs from './components/Tabs'
 import LayoutFooter from './components/Footer'
 import './index.less'
+import { ThemeConfigProp } from '@/redux/interface'
 
 const LayoutIndex = () => {
   const dispatch = useDispatch()
   const { isCollapse } = useSelector((state: RootState) => state.menu)
-
+  const { tabs, footer } = useSelector((state) => state.global.themeConfig) as ThemeConfigProp
   const { Sider, Content } = Layout
 
   // 获取按钮权限列表
@@ -47,7 +48,7 @@ const LayoutIndex = () => {
       </Sider>
       <Layout>
         <LayoutHeader></LayoutHeader>
-        <LayoutTabs></LayoutTabs>
+        {tabs && <LayoutTabs></LayoutTabs>}
         <Content>
           <div className="content">
             <Outlet></Outlet>
@@ -60,7 +61,7 @@ const LayoutIndex = () => {
           {/* </CSSTransition> */}
           {/* </TransitionGroup> */}
         </Content>
-        <LayoutFooter></LayoutFooter>
+        {footer && <LayoutFooter></LayoutFooter>}
       </Layout>
     </section>
   )

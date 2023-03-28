@@ -7,15 +7,18 @@ import Language from './components/Language'
 import Theme from './components/Theme'
 import Fullscreen from './components/Fullscreen'
 import './index.less'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux'
 
 const LayoutHeader = () => {
   const { Header } = Layout
+  const breadcrumb = useSelector<RootState>((state) => state.global.themeConfig.breadcrumb) as boolean
 
   return (
     <Header>
       <div className="header-lf">
         <CollapseIcon />
-        <BreadcrumbNav />
+        {breadcrumb && <BreadcrumbNav />}
       </div>
       <div className="header-ri">
         <AssemblySize />

@@ -2,7 +2,7 @@ import { Drawer, Divider, Switch } from 'antd'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FireOutlined, SettingOutlined } from '@ant-design/icons'
-import { setBreadcrumb, setDark, setFooter, setTabs, setWeakOrGray } from '@/redux/modules/global'
+import { setBreadcrumb, setDark, setFooter, setTabs } from '@/redux/modules/global'
 import { updateCollapse } from '@/redux/modules/menu'
 import { RootState } from '@/redux'
 import { ThemeConfigProp } from '@/redux/interface'
@@ -11,15 +11,9 @@ const Theme = () => {
   const dispatch = useDispatch()
   const isCollapse = useSelector<RootState>((state) => state.menu.isCollapse) as boolean
   const themeConfig = useSelector<RootState>((state) => state.global.themeConfig) as ThemeConfigProp
-  const { weakOrGray, isDark, breadcrumb, tabs, footer } = themeConfig
+  const { isDark, breadcrumb, tabs, footer } = themeConfig
 
   const [visible, setVisible] = useState<boolean>(false)
-  const changeSetWeakOrGray = (checked: boolean, theme: string) => {
-    if (checked) {
-      dispatch(setWeakOrGray(theme))
-      return
-    }
-  }
 
   return (
     <>
@@ -52,24 +46,6 @@ const Theme = () => {
             unCheckedChildren={<>🌜</>}
             onChange={(e) => {
               dispatch(setDark(e))
-            }}
-          />
-        </div>
-        <div className="theme-item">
-          <span>灰色模式</span>
-          <Switch
-            checked={weakOrGray === 'gray'}
-            onChange={(e) => {
-              changeSetWeakOrGray(e, 'gray')
-            }}
-          />
-        </div>
-        <div className="theme-item">
-          <span>色弱模式</span>
-          <Switch
-            checked={weakOrGray === 'weak'}
-            onChange={(e) => {
-              changeSetWeakOrGray(e, 'weak')
             }}
           />
         </div>

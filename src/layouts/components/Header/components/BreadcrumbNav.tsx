@@ -5,8 +5,9 @@ import { RootState, useSelector } from '@/redux'
 
 const BreadcrumbNav = () => {
   const { pathname } = useLocation()
-  const breadcrumbState = useSelector((state: RootState) => state.breadcrumb)
-  const breadcrumbList = breadcrumbState.breadcrumbList[pathname] || []
+  const breadcrumbState = useSelector((state: RootState) => state.breadcrumb.breadcrumbList)
+  const breadcrumbList = breadcrumbState[pathname] || []
+  console.log(breadcrumbList, 'breadcrumbList')
 
   return (
     <Breadcrumb>
