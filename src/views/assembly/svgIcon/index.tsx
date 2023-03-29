@@ -28,7 +28,6 @@ const svgIcon = () => {
         <Descriptions.Item label="name">图标的名称，svg 图标必须存储在 src/assets/icons 目录下</Descriptions.Item>
         <Descriptions.Item label="prefix">图标的前缀，默认为icon</Descriptions.Item>
         <Descriptions.Item label="iconStyle">
-          {' '}
           图标的样式，默认样式为 {'{ width: 100px, height: 100px}'}{' '}
         </Descriptions.Item>
       </Descriptions>

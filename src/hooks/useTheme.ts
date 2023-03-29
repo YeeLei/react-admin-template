@@ -13,14 +13,14 @@ const useTheme = () => {
     if (weakOrGray === 'gray') body.setAttribute('style', 'filter: grayscale(1)')
 
     // 切换暗黑模式
-    let head = document.getElementsByTagName('head')[0]
+    const head = document.getElementsByTagName('head')[0]
     const getStyle = head.getElementsByTagName('style')
     if (getStyle.length > 0) {
       for (let i = 0, l = getStyle.length; i < l; i++) {
         if (getStyle[i]?.getAttribute('data-type') === 'dark') getStyle[i].remove()
       }
     }
-    let styleDom = document.createElement('style')
+    const styleDom = document.createElement('style')
     styleDom.dataset.type = 'dark'
     styleDom.innerHTML = isDark ? darkTheme : defaultTheme
     head.appendChild(styleDom)

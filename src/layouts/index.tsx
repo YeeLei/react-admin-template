@@ -28,7 +28,7 @@ const LayoutIndex = () => {
   const listeningWindow = () => {
     window.onresize = () => {
       return (() => {
-        let screenWidth = document.body.clientWidth
+        const screenWidth = document.body.clientWidth
         if (!isCollapse && screenWidth < 1200) dispatch(updateCollapse(true))
         if (!isCollapse && screenWidth > 1200) dispatch(updateCollapse(false))
       })()

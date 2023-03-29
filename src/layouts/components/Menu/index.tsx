@@ -11,6 +11,7 @@ import type { MenuProps } from 'antd'
 import * as Icons from '@ant-design/icons'
 import Logo from './components/Logo'
 import './index.less'
+import SvgIcon from '@/components/SvgIcon'
 
 const LayoutMenu = () => {
   const dispatch = useDispatch()
@@ -54,7 +55,11 @@ const LayoutMenu = () => {
   // 动态渲染 Icon 图标
   const customIcons: { [key: string]: any } = Icons
   const addIcon = (name: string) => {
-    return React.createElement(customIcons[name])
+    return name !== '' ? (
+      React.createElement(customIcons[name])
+    ) : (
+      <SvgIcon name="xianxingdaoyu" iconStyle={{ width: '14px', height: '14px' }} />
+    )
   }
 
   // 处理后台返回菜单 key 值为 antd 菜单需要的 key 值
@@ -70,6 +75,7 @@ const LayoutMenu = () => {
   // 获取菜单列表并处理成 antd menu 需要的格式
   const [menuList, setMenuList] = useState<MenuItem[]>([])
   const [loading, setLoading] = useState(false)
+
   const getMenuData = async () => {
     setLoading(true)
     try {
@@ -94,9 +100,14 @@ const LayoutMenu = () => {
   const navigate = useNavigate()
   const clickMenu: MenuProps['onClick'] = ({ key }: { key: string }) => {
     const route = searchRoute(key, reduxMenuList)
+    // 如果当前点击的菜单是外链，则跳转到链接地址
     if (route.isLink) window.open(route.isLink, '_blank')
     navigate(key)
   }
+
+  // console.log(menuList, 'menuList')
+  // console.log(openKeys, 'openKeys')
+  // console.log(selectedKeys, 'selectedKeys')
 
   return (
     <div className="menu">

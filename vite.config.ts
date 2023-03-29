@@ -7,6 +7,7 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import viteCompression from 'vite-plugin-compression'
 import eslintPlugin from 'vite-plugin-eslint'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import autoprefixer from 'autoprefixer'
 
 // @see: https://vitejs.dev/config/
 export default defineConfig((mode: ConfigEnv): UserConfig => {
@@ -31,6 +32,15 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
           javascriptEnabled: true,
           additionalData: `@import "@/styles/var.less";`,
         },
+      },
+      postcss: {
+        plugins: [
+          // 添加浏览器前缀
+          autoprefixer({
+            overrideBrowserslist: ['Chrome > 31', 'ff> 31', 'ie > 8', 'last 2 versions'],
+            grid: true,
+          }),
+        ],
       },
     },
     // server config
@@ -61,7 +71,7 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
       }),
       // * 使用 svg 图标
       createSvgIconsPlugin({
-        iconDirs: [resolve(process.cwd(), 'src/static/icons')],
+        iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
         symbolId: 'icon-[dir]-[name]',
       }),
       // * EsLint 报错信息显示在浏览器界面上

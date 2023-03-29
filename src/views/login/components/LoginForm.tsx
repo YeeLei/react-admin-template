@@ -22,10 +22,14 @@ const LoginForm = () => {
     try {
       setLoading(true)
       const { data } = await loginApi(loginForm)
-      dispatch(setToken(data!.token))
-      dispatch(setTabsList([]))
-      message.success('登录成功！')
-      navigate(HOME_URL)
+      if (data?.token) {
+        dispatch(setToken(data!.token))
+        dispatch(setTabsList([]))
+        message.success('登录成功！')
+        navigate(HOME_URL)
+      } else {
+        message.error('登录失败')
+      }
     } finally {
       setLoading(false)
     }

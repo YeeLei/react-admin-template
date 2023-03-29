@@ -1,4 +1,4 @@
 {
 	// 保存自动格式化代码
-	"editor.formatOnSave": true
+	"editor.formatOnSave": true,
 }

@@ -27,6 +27,7 @@ const AuthRouter = (props: { children: JSX.Element }) => {
   const staticRouter = [HOME_URL, '/403']
 
   const routerList = authRouter.concat(staticRouter)
+
   // * 如果访问的地址没有在路由表中，重定向到403页面
   if (routerList.indexOf(pathname) === -1) return <Navigate to="/403" />
 

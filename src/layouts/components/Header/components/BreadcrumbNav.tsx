@@ -7,7 +7,6 @@ const BreadcrumbNav = () => {
   const { pathname } = useLocation()
   const breadcrumbState = useSelector((state: RootState) => state.breadcrumb.breadcrumbList)
   const breadcrumbList = breadcrumbState[pathname] || []
-  console.log(breadcrumbList, 'breadcrumbList')
 
   return (
     <Breadcrumb>

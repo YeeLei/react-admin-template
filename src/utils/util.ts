@@ -46,7 +46,7 @@ export const localClear = () => {
  * @return string
  */
 export const getBrowserLang = () => {
-  let browserLang = navigator.language ? navigator.language : navigator.browserLanguage
+  const browserLang = navigator.language ? navigator.language : navigator.browserLanguage
   let defaultBrowserLang = ''
   if (
     browserLang.toLowerCase() === 'cn' ||
@@ -66,9 +66,9 @@ export const getBrowserLang = () => {
  * @returns array
  */
 export const getOpenKeys = (path: string) => {
-  let newStr: string = ''
-  let newArr: any[] = []
-  let arr = path.split('/').map((i) => '/' + i)
+  let newStr = ''
+  const newArr: any[] = []
+  const arr = path.split('/').map((i) => '/' + i)
   for (let i = 1; i < arr.length - 1; i++) {
     newStr += arr[i]
     newArr.push(newStr)
@@ -84,7 +84,7 @@ export const getOpenKeys = (path: string) => {
  */
 export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObject => {
   let result: RouteObject = {}
-  for (let item of routes) {
+  for (const item of routes) {
     if (item.path === path) return item
     if (item.children) {
       const res = searchRoute(path, item.children)
@@ -101,7 +101,7 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
  * @returns array
  */
 export const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) => {
-  let tempPath: any[] = []
+  const tempPath: any[] = []
   try {
     const getNodePath = (node: Menu.MenuOptions) => {
       tempPath.push(node)
@@ -134,7 +134,7 @@ export const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) =>
  * @returns object
  */
 export const findAllBreadcrumb = (menuList: Menu.MenuOptions[]): { [key: string]: any } => {
-  let handleBreadcrumbList: any = {}
+  const handleBreadcrumbList: any = {}
   const loop = (menuItem: Menu.MenuOptions) => {
     // 下面判断代码解释 *** !item?.children?.length   ==>   (item.children && item.children.length > 0)
     if (menuItem?.children?.length) menuItem.children.forEach((item) => loop(item))
@@ -181,7 +181,7 @@ export const deepCopy = <T>(obj: any): T => {
   } catch (error) {
     newObj = {}
   }
-  for (let attr in obj) {
+  for (const attr in obj) {
     if (typeof obj[attr] === 'object') {
       newObj[attr] = deepCopy(obj[attr])
     } else {
