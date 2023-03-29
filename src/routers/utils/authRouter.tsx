@@ -14,7 +14,7 @@ const AuthRouter = (props: { children: JSX.Element }) => {
 
   const { pathname } = useLocation()
   const route = searchRoute(pathname, rootRouter)
-  console.log(route, 'route')
+  // console.log(route, 'route')
 
   if (route.path === '/login' && token) return <Navigate to="/home/index" replace />
   // * 判断当前路由是否需要访问权限(不需要权限直接放行)

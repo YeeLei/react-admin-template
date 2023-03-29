@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import Loading from '@/components/Loading'
 
 let needLoadingRequestCount = 0
@@ -9,7 +9,7 @@ export const showFullScreenLoading = () => {
     let dom = document.createElement('div')
     dom.setAttribute('id', 'loading')
     document.body.appendChild(dom)
-    ReactDOM.createRoot(dom).render(<Loading />)
+    ReactDOM.render(<Loading />, dom)
   }
   needLoadingRequestCount++
 }

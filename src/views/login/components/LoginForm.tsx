@@ -9,7 +9,6 @@ import { setTabsList } from '@/redux/modules/tabs'
 import { setToken } from '@/redux/modules/global'
 import { useDispatch } from '@/redux'
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from '@ant-design/icons'
-import md5 from 'js-md5'
 
 const LoginForm = () => {
   const dispatch = useDispatch()
@@ -22,7 +21,6 @@ const LoginForm = () => {
   const onFinish = async (loginForm: Login.ReqLoginForm) => {
     try {
       setLoading(true)
-      loginForm.password = md5(loginForm.password)
       const { data } = await loginApi(loginForm)
       dispatch(setToken(data!.token))
       dispatch(setTabsList([]))
@@ -49,10 +47,10 @@ const LoginForm = () => {
       autoComplete="off"
     >
       <Form.Item name="username" rules={[{ required: true, message: '请输入用户名' }]}>
-        <Input placeholder="用户名：admin / user" prefix={<UserOutlined />} />
+        <Input placeholder="用户名：admin / editor" prefix={<UserOutlined />} />
       </Form.Item>
       <Form.Item name="password" rules={[{ required: true, message: '请输入密码' }]}>
-        <Input.Password autoComplete="new-password" placeholder="密码：123456" prefix={<LockOutlined />} />
+        <Input.Password autoComplete="new-password" placeholder="密码：12345678" prefix={<LockOutlined />} />
       </Form.Item>
       <Form.Item className="login-btn">
         <Button
