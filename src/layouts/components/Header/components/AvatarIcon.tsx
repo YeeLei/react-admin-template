@@ -8,6 +8,7 @@ import { setToken } from '@/redux/modules/global'
 import PasswordModal from './PasswordModal'
 import InfoModal from './InfoModal'
 import avatar from '@/assets/images/avatar.png'
+import { setTabsList } from '@/redux/modules/tabs'
 
 const AvatarIcon = () => {
   const dispatch = useDispatch()
@@ -29,6 +30,7 @@ const AvatarIcon = () => {
       cancelText: '取消',
       onOk: () => {
         dispatch(setToken(''))
+        dispatch(setTabsList([]))
         message.success('退出登录成功！')
         navigate('/login')
       },

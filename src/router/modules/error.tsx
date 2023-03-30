@@ -1,6 +1,6 @@
 import React from 'react'
-import lazyLoad from '@/routers/utils/lazyLoad'
-import { RouteObject } from '@/routers/interface'
+import lazyLoad from '@/router/utils/lazyLoad'
+import { RouteObject } from '@/router/interface'
 
 // 错误页面模块
 const errorRouter: Array<RouteObject> = [

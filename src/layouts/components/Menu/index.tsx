@@ -105,9 +105,9 @@ const LayoutMenu = () => {
     navigate(key)
   }
 
-  // console.log(menuList, 'menuList')
-  // console.log(openKeys, 'openKeys')
-  // console.log(selectedKeys, 'selectedKeys')
+  console.log(menuList, 'menuList')
+  console.log(openKeys, 'openKeys')
+  console.log(selectedKeys, 'selectedKeys')
 
   return (
     <div className="menu">

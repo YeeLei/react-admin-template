@@ -6,7 +6,7 @@ interface SvgProps {
 }
 
 export default function SvgIcon(props: SvgProps) {
-  const { name, prefix = 'icon', iconStyle = { width: '100px', height: '100px' } } = props
+  const { name, prefix = 'icon', iconStyle = { width: '1em', height: '1em' } } = props
   const symbolId = `#${prefix}-${name}`
   return (
     <svg aria-hidden="true" style={iconStyle}>

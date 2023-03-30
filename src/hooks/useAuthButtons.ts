@@ -1,6 +1,6 @@
 import { searchRoute } from '@/utils/util'
 import { useLocation } from 'react-router-dom'
-import { routerArray } from '@/routers'
+import { routerArray } from '@/router'
 import { RootState, useSelector } from '@/redux'
 
 /**

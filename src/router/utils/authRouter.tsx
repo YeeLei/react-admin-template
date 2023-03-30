@@ -1,6 +1,6 @@
 import { useLocation, Navigate } from 'react-router-dom'
 import { searchRoute } from '@/utils/util'
-import { rootRouter } from '@/routers/index'
+import { rootRouter } from '@/router/index'
 import { HOME_URL } from '@/config/config'
 import { RootState, useSelector } from '@/redux'
 

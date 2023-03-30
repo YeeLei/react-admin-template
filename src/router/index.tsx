@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from 'react-router-dom'
-import { RouteObject } from '@/routers/interface'
+import { RouteObject } from '@/router/interface'
 import Login from '@/views/login/index'
 
 // * 导入所有router
